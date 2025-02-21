@@ -1,0 +1,44 @@
+#include <iostream>
+#include <cstdlib> //srand Header File
+#include <ctime> //time Header File
+
+using namespace std;
+
+int main()
+{
+    //Variable declarations
+    int noOfGuesses;
+    bool isGuessed = false;
+    int guess;
+    int num;
+
+    //Random number generator
+    srand(time(0));
+    num = rand() % 100;
+
+    //While statement (Game)
+    while ((noOfGuesses < 5) && (!isGuessed))
+    {
+        cout << "Enter your guess. Number must be between 0 and 100: ";
+        cin >> guess;
+        cout << endl;
+
+        noOfGuesses++;
+
+        if (guess == num)
+        {
+            cout << "Winner! You guessed the right number." << endl;
+            isGuessed = true;
+        }
+        else if (guess < num)
+            cout << "Guess again!\n Your number's too low." << endl;
+        else
+            cout << "Guess again!\n Your number's too high." << endl;
+    }
+
+    if (!isGuessed)
+        cout << "You lose! The correct number is "
+             << num << endl;
+
+    return 0;
+}
